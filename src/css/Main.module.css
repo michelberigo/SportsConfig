@@ -1,0 +1,16 @@
+.Header {
+    background-color: tomato;
+    padding: 20px;
+}
+
+@media (max-width: 576px) {
+    .Header {
+        background-color: tomato;
+        padding: 0px;
+    }
+
+    .Header a {
+        border-color:teal;
+        display: block;
+    }
+}

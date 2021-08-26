@@ -5,13 +5,9 @@ class Proximos extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log(window.sessionStorage);
-
         this.state = {
             proximos: JSON.parse(window.sessionStorage.getItem('proximos')),
         };
-
-        console.log(this.state);
 
         this.listarJogadores = this.listarJogadores.bind(this);
     }
