@@ -21,7 +21,7 @@ window.sessionStorage.setItem("config", JSON.stringify(config));
 
 function App() {
     return (
-        <Router>
+        <Router basename="/jogadores">
             <div id="header" className={ styles.Header }>
                 <div className="container-fluid">
                     <div className="row text-center">
