@@ -6,7 +6,9 @@ class Jogador extends React.Component {
             <li className="list-group-item">
                 { this.props.value }
 
-                <span><button type="button" className="btn btn-danger" onClick={ () => this.props.removerJogador(this.props.index) }>Remover</button></span>
+                { this.props.removerJogador &&
+                    <span><button type="button" className="btn btn-danger" onClick={ () => this.props.removerJogador(this.props.index) }>Remover</button></span>
+                }
             </li>
         )
     }

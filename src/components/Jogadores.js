@@ -27,7 +27,7 @@ class Jogadores extends React.Component {
         this.state.jogadores.push(this.state.jogador_novo);
         this.setState({ jogadores: this.state.jogadores });
 
-        localStorage.setItem('jogadores', JSON.stringify(this.state.jogadores));
+        window.sessionStorage.setItem('jogadores', JSON.stringify(this.state.jogadores));
 
         this.setState({ jogador_novo: '' });
         
@@ -36,8 +36,6 @@ class Jogadores extends React.Component {
 
     listarJogadores() {
         let _this = this;
-
-        console.log(this.state.jogadores);
 
         let listaJogadores = this.state.jogadores.map(function (jogador, key) {
             return <Jogador key={key} value={jogador} index={key} removerJogador={ _this.removerJogador } />
@@ -51,30 +49,34 @@ class Jogadores extends React.Component {
 
         this.setState({ jogadores: this.state.jogadores.sort(function() { return 0.5 - Math.random() }) });
 
-        localStorage.setItem('jogadores', JSON.stringify(this.state.jogadores));
+        window.sessionStorage.setItem('jogadores', JSON.stringify(this.state.jogadores));
     }
 
     removerJogador(index) {
         let jogadores = this.state.jogadores.filter((_, i) => i !== index);
         this.setState({ jogadores: jogadores });
 
-        localStorage.setItem('jogadores', JSON.stringify(this.state.jogadores));
+        window.sessionStorage.setItem('jogadores', JSON.stringify(this.state.jogadores));
     }
 
     render() {
         return (
-            <div className="container text-center">
-                <h1>Jogadores</h1>
+            <div className="container-fluid text-center">
+                <hr />
+
+                <h3>Adicionar Jogador</h3>
 
                 <div className="row">
-                    <div className="col-sm-2 form-group">
+                    <div className="col-sm-3 form-group">
                         <input type="text" className="form-control" placeholder="Nome do Jogador" onChange={ this.handleChange } value={this.state.jogador_novo} />
                     </div>
 
-                    <div className="col-sm-2 form-group">
+                    <div className="col-sm-1 form-group">
                         <button type="submit" className="btn btn-success" onClick={ this.adicionarJogador }>Adicionar</button>
                     </div>
                 </div>
+
+                <hr />
 
                 <div className="row">
                     <div className="col-sm-12 form-group">
@@ -84,7 +86,7 @@ class Jogadores extends React.Component {
                     </div>
                 </div>
 
-                <div>
+                <div className="row">
                     <div className="col-sm-12">
                         { this.listarJogadores() }
                     </div>
